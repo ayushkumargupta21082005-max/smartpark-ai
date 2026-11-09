@@ -1,0 +1,1 @@
+"""SmartPark AI FastAPI application."""

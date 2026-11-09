@@ -1,0 +1,5 @@
+names:
+  0: license_plate
+path: C:\Users\piyus\.cache\kagglehub\datasets\ronakgohil\license-plate-dataset\versions\2\archive
+train: images/train
+val: images/val

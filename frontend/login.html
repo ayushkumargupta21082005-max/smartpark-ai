@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SmartPark AI — Login</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="login">
+    <main class="form-card">
+        <h1>SMART<span style="color:#41d9b5">PARK</span> AI</h1>
+        <p>Sign in to the parking intelligence console.</p>
+        <form id="login">
+            <input name="username" placeholder="Username" autocomplete="username" required style="width:100%;margin:7px 0">
+            <input name="password" type="password" placeholder="Password" autocomplete="current-password" required style="width:100%;margin:7px 0">
+            <button style="width:100%;margin-top:8px">Sign in</button>
+        </form>
+        <p id="error" class="notice"></p>
+    </main>
+    <script src="/static/js/api.js"></script>
+    <script>
+        document.querySelector('#login').onsubmit = async e => {
+            e.preventDefault();
+            try {
+                const r = await api.post('/auth/login', Object.fromEntries(new FormData(e.target)));
+                localStorage.setItem('smartpark_token', r.accessToken);
+                location.href = '/dashboard.html';
+            } catch (err) {
+                document.querySelector('#error').textContent = err.message;
+            }
+        };
+    </script>
+</body>
+</html>
+
